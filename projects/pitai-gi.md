@@ -32,6 +32,7 @@
 - Валентин Ласков, преводач
 - [Димитър Димитров](mailto:me@ddimitrov.name), разработчик (frontend и backend) и координатор на проекта
 - [Йордан Щерев](https://github.com/shterev), разработчик (frontend)
+- Славка Цанкова, разработчик (frontend)
 - [Станислав Гатев](https://github.com/s2gatev), разработчик (backend)
 
 И други.
