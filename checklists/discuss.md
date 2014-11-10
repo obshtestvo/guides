@@ -8,7 +8,7 @@
 
 Има два начина за това:
  1. Под формата на [*issue* в проекта с ръководствата](https://github.com/obshtestvo/guides/issues/new) *(този проект)*.
- 1. Стартирате дискусия за това в [общата Facebook група на Общество](https://www.facebook.com/groups/obshtestvo).
+ 1. Пускате съобщение в [общата Facebook група на Общество](https://www.facebook.com/groups/obshtestvo) и коментарите служат за дискусия.
 
 По този начин, хората, които имат мнение по въпроса могат да го изкажат. 
 
