@@ -50,10 +50,10 @@ Rails проект в production режим.
 ### 1. Нов контейнер
 
 Прави се нов LXC контейнер, като се влезе като root на koi.obshtestvo.bg и
-се изпълни `container/create` от `/root`. Нека `някаквоиме` е името на
+се изпълни `container/create` от `/root`. Нека `ИМЕНАПРИЛОЖЕНИЕТО` е името на
 контейнера. За подробности, вижте [документацията на `container/create`](https://github.com/obshtestvo/create-lxc#readme).
 
-    container/create някаквоиме
+    container/create ИМЕНАПРИЛОЖЕНИЕТО
 
 Тази операция отнема 3-4 минути. След това влизате като `root` в контейнера
 и си добавяте публичния ключ във файла `.ssh/authorized_keys`.
