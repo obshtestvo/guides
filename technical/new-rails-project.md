@@ -43,6 +43,8 @@ Rails проект в production режим.
 
 Ако ID-то е 14, сменяте порта на `2214`.
 
+**Проверка за успех:** Успешно SSH-ване до новия контейнер.
+
 ### 2. Инсталация на Ruby
 
 Ако Ruby on Rails проектът няма специфични изисквания за версия на Ruby, се
@@ -57,7 +59,7 @@ stand-alone режим. Следват се и препоръките за съ�
 Инсталирайте необходими зависимости (като `root`):
 
     apt-get install -y autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev
-    apt-get install -y curl wget
+    apt-get install -y curl wget sudo
 
 Като `root`, в `/root`, изпълнете следното:
 
@@ -74,6 +76,11 @@ stand-alone режим. Следват се и препоръките за съ�
 
     gem install bundler
 
+**Проверка за успех:** Командата `ruby -v` трябва да покаже последната
+инсталирана версия. Например:
+
+    ruby -v
+    ruby 2.1.4p265 (2014-10-27 revision 48166) [x86_64-linux]
 
 ### 3. Подготовка на потребител
 
@@ -81,11 +88,190 @@ stand-alone режим. Следват се и препоръките за съ�
 
     mkdir -p /var/www
     cp -r .vimrc .ssh .bashrc .profile /var/www/
+    echo 'export RACK_ENV=production' >> /var/www/.bashrc
     chown -R www-data:www-data /var/www/
     chsh -s /bin/bash www-data
 
 Вече трябва да може да се логнете като `www-data` със `su - www-data`, или
 директно по SSH отвън.
+
+**Проверка за успех:** `su - www-data` трябва да ви вкара като `www-data`, като
+SHELL-ът там и prompt-ът трябва да приличат на root-ските. Следната команда:
+
+    echo $RACK_ENV
+
+Трябва да изведе "production", когато се изпълни от името на `www-data`.
+
+### 4. Външни зависимости
+
+Инсталирайте други зависимости, от които приложението има нужда, например
+бази от данни.
+
+#### PostgreSQL
+
+Инсталацията става по стандартния начин, като `root`:
+
+    apt-get install postgresql libpq-dev
+
+Пакетът `libpq-dev` е необходим, за да може да се компилира Ruby драйвера за
+PostgreSQL.
+
+#### MySQL
+
+Подобно на PostgreSQL.
+
+### 5. Capistrano deployment
+
+Препоръчва се употребата на [Capistrano](http://capistranorb.com/).
+
+#### Локално
+
+По-долу се добавят файлове в локалното копие на проекта.
+
+Добавете следните Gem-ове в `Gemfile`-а на проекта, за предпочитане в групата
+`:development`:
+
+```ruby
+group :development do
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano-bundler'
+  gem 'capistrano3-puma'
+end
+```
+
+Добавете следното извън групата `:development`:
+
+```ruby
+gem 'puma'
+```
+
+Добавете и `Capfile` със следното съдържание:
+
+```ruby
+require 'capistrano/setup'
+require 'capistrano/deploy'
+
+require 'capistrano/bundler'
+require 'capistrano/rails/assets'
+require 'capistrano/rails/migrations'
+require 'capistrano/puma'
+require 'capistrano/puma/jungle'
+require 'capistrano/puma/nginx'
+
+# Loads custom tasks from `lib/capistrano/tasks' if you have any defined.
+Dir.glob('lib/capistrano/tasks/*.rake').each { |r| import r }
+```
+
+Добавете `config/deploy.rb` със следното примерно съдържание:
+
+```ruby
+lock '3.2.1'
+
+set :application,     'ИМЕНАПРИЛОЖЕНИЕТО'
+set :repo_url,        'https://github.com/obshtestvo/ОСНОВЕНДОМЕЙН.git'
+set :linked_files,    %w(config/database.yml config/secrets.yml config/application.yml)
+set :linked_dirs,     %w(bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system)
+set :keep_releases,   20
+set :rails_env,       'production'
+set :puma_init_active_record, true
+
+namespace :deploy do
+  namespace :nginx do
+    desc 'Generate an Nginx configuration file'
+    task :config do
+      on roles(:web) do |role|
+        template_puma('nginx_conf', "#{shared_path}/#{fetch(:nginx_config_name)}_nginx.conf", role)
+      end
+    end
+  end
+end
+
+after 'deploy:check', 'deploy:nginx:config'
+after 'deploy:check', 'puma:config'
+```
+
+Добавете `config/deploy/production.rb` със следното примерно съдържание:
+
+```ruby
+server  'koi.obshtestvo.bg:22НОМЕРКОНТЕЙНЕР',
+        user: 'www-data',
+        roles: %w(app web db)
+
+set :deploy_to,       '/var/www/ОСНОВЕНДОМЕЙН'
+set :puma_threads,    [15, 15]
+set :puma_workers,    4
+```
+
+Генерирайте шаблони по подразбиране на конфигурациите на Nginx и на Puma, като
+изпълните във вашето локално копие на проекта следното:
+
+    bundle install
+    rails g capistrano:nginx_puma:config
+
+Commit-нете промените.
+
+Изпълнете локално следната команда (би трябвало да даде грешка заради липсващи
+конфигурационни файлове, което е нормално):
+
+    bundle exec cap production deploy:check
+
+Резултатът от командата ще бъде, че ще създаде необходимата структура от
+файлове и папки на сървъра.
+
+#### На сървъра
+
+Създайте следните файлове (това са файловете от опцията `:linked_files`,
+изредени в `config/deploy.rb`):
+
+    /var/www/ОСНОВЕНДОМЕЙН/shared/config/secrets.yml
+    /var/www/ОСНОВЕНДОМЕЙН/shared/config/database.yml
+    /var/www/ОСНОВЕНДОМЕЙН/shared/config/application.yml
+
+#### Локално
+
+Отново изпълнете следната команда локално:
+
+    bundle exec cap production deploy:check
+
+Този път трябва да мине без грешки.
+
+#### На сървъра
+
+Активирайте Nginx конфигурацията (изпълнете като `root`):
+
+    ln -s /var/www/ОСНОВЕНДОМЕЙН/shared/ИМЕНАПРИЛОЖЕНИЕТО_production_nginx.conf /etc/nginx/sites-enabled/
+    /etc/init.d/nginx restart
+
+Уверете се, че има файл `/etc/lsb-release`, който е необходим за задачата
+`puma:jungle:install`, която ще бъде изпълнена след малко (при някои
+Debian-базирани дистрибуции този файл липсва):
+
+    touch /etc/lsb-release
+
+**Временно** добавете следното в `/etc/sudoers` на сървъра:
+
+    # Allow www-data to execute all commands without a password
+    # Should not be left here permanently
+    www-data ALL=(ALL:ALL) NOPASSWD: ALL
+
+#### Локално
+
+Изпълнете следните команди от локалното ви копие:
+
+    bundle exec cap production puma:jungle:install
+
+#### На сървъра
+
+**Важно!** Премахнете/коментирайте реда `www-data ALL=(ALL:ALL) NOPASSWD: ALL`
+от файла `/etc/sudoers` на сървъра.
+
+След това:
+
+    /etc/init.d/puma start
+    /etc/init.d/nginx restart
+
+TODO
 
 ### 4. Nginx и HTTP препращане
 
@@ -207,7 +393,5 @@ stand-alone режим. Следват се и препоръките за съ�
 
     ln -s /etc/nginx/sites-available/ИМЕНАПРИЛОЖЕНИЕТО /etc/nginx/sites-enabled
     /etc/init.d/nginx reload
-
-### 5. Capistrano deployment
 
 ### 6. Puma Jungle
