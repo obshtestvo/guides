@@ -1,17 +1,17 @@
 # Какво да правя когато искам да:
 
-- [Дискутирам как работи самото Общество и участниците в него](checklists/discuss.md)
-- [Помагам с този тип описателни, организационни документи](checklists/guide.md)
+- [Дискутирам как работи самото Общество и участниците в него](checklists/discuss.md#readme)
+- [Помагам с този тип описателни, организационни документи](checklists/guide.md#readme)
 
 -----------
 
-- [Помагам, но не съм техничар.](checklists/typical-nontech-tasks.md)
+- [Помагам, но не съм техничар.](checklists/typical-nontech-tasks.md#readme)
 
 -----------
 
-- [Направя и поддържам facebook страница за проект](checklists/facebook-page.md)
-- [Пиша на медиите](checklists/media.md)
-- [Намеря финансиране](checklists/funding.md)
+- [Направя и поддържам facebook страница за проект](checklists/facebook-page.md#readme)
+- [Пиша на медиите](checklists/media.md#readme)
+- [Намеря финансиране](checklists/funding.md#readme)
 - Помагам с писането и отговарянето на мейли
 
 -----------
