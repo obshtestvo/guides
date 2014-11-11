@@ -5,12 +5,12 @@
 
 -----------
 
- - [Помагам, но не съм техничар.](checklists/typical-nontech-tasks.md)
+- [Помагам, но не съм техничар.](checklists/typical-nontech-tasks.md)
 
 -----------
 
 - [Направя и поддържам facebook страница за проект](checklists/facebook-page.md)
-- Пиша на медиите
+- [Пиша на медиите](checklists/media.md)
 - Да намеря финансиране
 - Да помагам с писането на мейли
 
