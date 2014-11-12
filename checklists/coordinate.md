@@ -40,11 +40,17 @@
 Ако сте мислили по въпроса, но все още се колебаете, [питайте във facebook групата](https://www.facebook.com/groups/obshtestvo/).
 
 #### Примерни софтуерни комбинации ползвани за координация
-hackpad + google calendar
-github + google calendar    
-skype + trello + github + hackpad
-google drive + 
 
+ - `github` + `google calendar`
+ - `skype` + `trello`
+ - `skype` + `hackpad`
+ - `hackpad`
+ - `github` + `huboard`
+ - `github`
+ - `facebook група` + `github`
+ - `facebook група` + `google drive` + `github` + `huboard`
+
+Както виждате има доста различни варианти.
 
 
 <a id="o-fileshare"></a>
