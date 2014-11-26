@@ -5,7 +5,7 @@
 
 -----------
 
-- [Не съм техничар :flushed:! Много ми харесват проектите, но не съм техничар.](checklists/typical-nontech-tasks.md#readme)
+- [Не съм техничар :flushed:! Много ми харесват проектите, но не знам с какво да помогна.](checklists/typical-nontech-tasks.md#readme)
 
 -----------
 
