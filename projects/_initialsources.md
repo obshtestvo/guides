@@ -1,0 +1,11 @@
+# Справки за задачи и описание по проектите
+[Подобрения по общество.бг и визията](https://obshtestvo.hackpad.com/-.--DpwCwTJrkPO)
+[Бележки по проекта „Следи парламента“](https://obshtestvo.hackpad.com/--Mi6BYpUSC0u)
+[Бележки по фейсбук страницата на „Следи парламента“](https://obshtestvo.hackpad.com/--SXBcHZ1egZk)
+[Общество @ HackFMI](https://obshtestvo.hackpad.com/-HackFMI-6AilKM1JkRb)
+[Пояснения за Java курса на Емо Гоцев](https://obshtestvo.hackpad.com/HackFMI-Java--u2k7b5D9EDw)
+[Общество - Хакатон 22-24.08.2014](https://obshtestvo.hackpad.com/-22-24.08.2014-CRLi0KOaIdb)
+[Хакатон 22.08.2014 - Нетехнически теми](https://obshtestvo.hackpad.com/-22.08.2014--aHHu1iU99dp)
+[Хакатон Общество - технически задачи по проектите](https://hackpad.com/--wvO9CbEAdrA)
+[Базово описание на проектите](https://obshtestvo.hackpad.com/--WMr2TDPUoE1)
+[Базово техническо инфо за проектите](https://obshtestvo.hackpad.com/--9xT6qZWgve3)
