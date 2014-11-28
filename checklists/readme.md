@@ -1,22 +1,22 @@
 # Какво да правя когато:
 
-- [Искам да дискутирам как работи самото Общество и участниците в него](checklists/discuss.md#readme)
-- [Искам да помагам с този тип описателни, организационни документи](checklists/guide.md#readme)
+- [Искам да дискутирам как работи самото Общество и участниците в него](discuss.md#readme)
+- [Искам да помагам с този тип описателни, организационни документи](guide.md#readme)
 
 -----------
 
-- [Не съм техничар :flushed:! Много ми харесват проектите, но не знам с какво да помогна.](checklists/typical-nontech-tasks.md#readme)
+- [Не съм техничар :flushed:! Много ми харесват проектите, но не знам с какво да помогна.](typical-nontech-tasks.md#readme)
 
 -----------
 
-- [Искам да направя и поддържам facebook страница за проект](checklists/facebook-page.md#readme)
+- [Искам да направя и поддържам facebook страница за проект](facebook-page.md#readme)
 - Искам да се свържа с медиите
-- [Искам да намеря финансиране](checklists/funding.md#readme) - още има да се пише като се извлече [полезното от тук](https://obshtestvo.hackpad.com/--bdOZzaKkxHa), също от [плана за благотворителна вечер](https://obshtestvo.hackpad.com/VcWZfLsuNmD), а пък [тук има полезни коментари](https://obshtestvo.hackpad.com/-civic-hacking--k0TBfmUtQxC) от Петко
+- [Искам да намеря финансиране](funding.md#readme) - още има да се пише като се извлече [полезното от тук](https://obshtestvo.hackpad.com/--bdOZzaKkxHa), също от [плана за благотворителна вечер](https://obshtestvo.hackpad.com/VcWZfLsuNmD), а пък [тук има полезни коментари](https://obshtestvo.hackpad.com/-civic-hacking--k0TBfmUtQxC) от Петко
 - Искам да се помагам с писането и отговарянето на мейли
 
 -----------
 
-- [Искам да координирам проект](checklists/coordinate.md#readme)
+- [Искам да координирам проект](coordinate.md#readme)
 - [Искам да организирам среща с участници](https://github.com/obshtestvo/guides/issues/6)
 - Да намеря партньори по идея/проект
 - Да поема комуникацията с партньори и обществеността (PR)
