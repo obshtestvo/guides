@@ -32,7 +32,8 @@
 - [Темите на Гласът ни](https://obshtestvo.hackpad.com/GaMkm4cDruq#Темите-на-„Гласът-ни“)
 - [OpenData todo](https://obshtestvo.hackpad.com/Ww8hVOzeDXk#Open-Data-todo)
 - [Сигнали.бг - категоризации](https://obshtestvo.hackpad.com/Signali.bg--bvfIgzKabLg)
-----------------
+
+---
 
 - [Въпросник към хора преди да станат участници в проект](https://obshtestvo.hackpad.com/--GztCZmkr4kR)
 - [Как се защитава идеята за e-платформа пред скептици](https://obshtestvo.hackpad.com/--nswjOJ4gksy)
