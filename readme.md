@@ -1,5 +1,7 @@
 [Проекти](projects#readme) | [Работа по проекти](rules#readme) | [Технически насоки](technical#readme) | [Какво да правя когато...?](checklists#readme) | [ЧЗВ](faq.md#readme)
 
+<a name="skip-beta-menu"></a>
+
 # Включване в Общество.бг
 > познато още като "Общество"
 
